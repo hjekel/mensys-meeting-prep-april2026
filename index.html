@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="nl" data-lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mensys x Henk Jekel | Vrijdag 18 April 2026</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'><rect x='1' y='1' width='34' height='34' rx='8' fill='%23003087' stroke='%23C04A00' stroke-width='2'/><text x='18' y='24' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='900' font-size='14'>HJ</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & VARIABLES ────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue:    #003087;
+  --blue2:   #004ab8;
+  --blue-l:  #e8eef7;
+  --blue-ll: #f2f5fb;
+  --orange:  #C04A00;
+  --orange-c:#8B3400;
+  --orange-l:#fdf0e6;
+  --green:   #00a878;
+  --green-l: #e6f7f2;
+  --red:     #e0334c;
+  --red-l:   #fdf0f2;
+  --ink:     #1a2540;
+  --muted:   #5c6a85;
+  --border:  #dde3ef;
+  --bg:      #f5f7fc;
+  --white:   #ffffff;
+  --shadow:  0 2px 16px rgba(0,48,135,0.08);
+  --r:       10px;
+  --r-sm:    6px;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+/* ── TYPOGRAPHY ────────────────────────────────────────────── */
+h1,h2,h3,h4 { font-family: 'Syne', sans-serif; line-height: 1.15; }
+h2 { font-size: 1.6rem; font-weight: 700; }
+h3 { font-size: 1.15rem; font-weight: 700; }
+h4 { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+p  { margin-top: 0.6em; }
+strong { font-weight: 600; }
+
+/* ── LANG TOGGLE LOGIC ────────────────────────────────────── */
+/* High-specificity selectors (0,2,0) beat any single class (0,1,0)    */
+/* so display:none wins over display:inline-flex on .badge etc.         */
+html[data-lang="nl"] [data-en] { display: none !important; }
+html[data-lang="en"] [data-nl] { display: none !important; }
+
+/* ── NAV ───────────────────────────────────────────────────── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--blue);
+  height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 28px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 12px;
+  color: white; font-family: 'Syne', sans-serif;
+  font-weight: 700; font-size: 0.95rem; letter-spacing: 0.02em;
+}
+.nav-logo {
+  width: 36px; height: 36px;
+  flex-shrink: 0;
+}
+.nav-links { display: flex; gap: 4px; }
+.nav-link {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.8rem; font-weight: 500; padding: 6px 10px;
+  border-radius: 4px; text-decoration: none; cursor: pointer;
+  transition: all 0.15s;
+}
+.nav-link:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-actions { display: flex; align-items: center; gap: 8px; }
+
+.lang-btn {
+  display: flex; align-items: center; gap: 5px;
+  padding: 5px 10px; border-radius: 5px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: transparent; color: white; cursor: pointer;
+  font-size: 0.78rem; font-weight: 500;
+  transition: all 0.15s;
+}
+.lang-btn:hover { background: rgba(255,255,255,0.12); }
+.lang-btn.active { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.5); }
+
+.guide-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 14px; border-radius: 5px;
+  background: var(--orange); color: white; cursor: pointer;
+  font-size: 0.8rem; font-weight: 600;
+  border: none; transition: all 0.15s;
+}
+.guide-btn:hover { background: #a03a00; }
+
+/* ── HERO ─────────────────────────────────────────────────── */
+.hero {
+  margin-top: 56px;
+  background: linear-gradient(135deg, #001a52 0%, var(--blue) 55%, #00489e 100%);
+  padding: 64px 40px 56px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 90% 20%, rgba(255,102,0,0.12) 0%, transparent 60%);
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 1px; background: rgba(255,255,255,0.1);
+}
+.hero-inner { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; }
+.hero-eyebrow {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--orange);
+  margin-bottom: 18px;
+}
+.hero-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800; color: white;
+  margin-bottom: 14px;
+}
+.hero-title span { color: var(--orange); }
+.hero-subtitle {
+  font-size: 1.05rem; color: rgba(255,255,255,0.75);
+  max-width: 540px; font-weight: 400;
+}
+.hero-meta {
+  margin-top: 28px;
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+.hero-tag {
+  display: flex; align-items: center; gap: 7px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px; padding: 5px 14px;
+  font-size: 0.8rem; color: rgba(255,255,255,0.85);
+}
+.hero-tag .dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--orange);
+}
+
+/* ── INDEX BAR ────────────────────────────────────────────── */
+.index-bar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 40px;
+  display: flex; gap: 2px; flex-wrap: wrap;
+  position: sticky; top: 56px; z-index: 90;
+}
+.idx-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 13px 16px; cursor: pointer;
+  font-size: 0.82rem; font-weight: 500; color: var(--muted);
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s; text-decoration: none;
+}
+.idx-item:hover { color: var(--blue); border-bottom-color: var(--blue); }
+.idx-num {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--blue-l); color: var(--blue);
+  font-size: 0.7rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ── PAGE LAYOUT ──────────────────────────────────────────── */
+.page { max-width: 900px; margin: 0 auto; padding: 0 28px 80px; }
+
+/* ── SECTION ──────────────────────────────────────────────── */
+.section {
+  margin-top: 48px;
+  scroll-margin-top: 110px;
+}
+.section-header {
+  display: flex; align-items: flex-start; gap: 16px;
+  margin-bottom: 24px; padding-bottom: 18px;
+  border-bottom: 2px solid var(--border);
+}
+.section-num {
+  width: 42px; height: 42px; border-radius: 10px;
+  background: var(--blue); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800;
+  flex-shrink: 0;
+}
+.section-title-wrap { flex: 1; }
+.section-label {
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 4px;
+}
+
+/* ── CARDS ────────────────────────────────────────────────── */
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px 22px;
+  box-shadow: var(--shadow);
+}
+.card + .card { margin-top: 14px; }
+
+.card-blue { background: var(--blue-ll); border-color: rgba(0,48,135,0.12); }
+.card-orange { background: var(--orange-l); border-color: rgba(255,102,0,0.15); }
+.card-green { background: var(--green-l); border-color: rgba(0,168,120,0.15); }
+.card-red { background: var(--red-l); border-color: rgba(224,51,76,0.15); }
+
+/* ── GRID ─────────────────────────────────────────────────── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+@media (max-width: 640px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+}
+
+/* ── BADGES ───────────────────────────────────────────────── */
+.badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 10px; border-radius: 12px;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.02em;
+}
+.badge-blue   { background: var(--blue-l);  color: var(--blue); }
+.badge-orange { background: var(--orange-l);color: var(--orange); }
+.badge-green  { background: var(--green-l); color: var(--green); }
+.badge-red    { background: var(--red-l);   color: var(--red); }
+.badge-grey   { background: #ebeef5;        color: var(--muted); }
+
+/* ── PILL LIST ────────────────────────────────────────────── */
+.pill-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.pill {
+  background: var(--blue-l); color: var(--blue);
+  border-radius: 16px; padding: 4px 12px;
+  font-size: 0.78rem; font-weight: 500;
+}
+
+/* ── TIMELINE / CASCADE ───────────────────────────────────── */
+.cascade { display: flex; flex-direction: column; gap: 0; }
+.cascade-item {
+  display: flex; gap: 14px;
+  padding: 14px 16px;
+  border-left: 3px solid var(--blue);
+  margin-left: 18px;
+  position: relative;
+}
+.cascade-item::before {
+  content: '';
+  position: absolute; left: -9px; top: 18px;
+  width: 15px; height: 15px; border-radius: 50%;
+  background: var(--blue); border: 3px solid var(--bg);
+}
+.cascade-item:not(:last-child) { border-bottom: none; }
+.cascade-label {
+  min-width: 80px; font-weight: 700; font-size: 0.82rem;
+  color: var(--blue); padding-top: 2px;
+}
+.cascade-content { flex: 1; font-size: 0.88rem; color: var(--ink); }
+.cascade-content strong { display: block; font-size: 0.82rem; color: var(--muted); margin-bottom: 4px; font-weight: 500; }
+
+/* ── COMPARISON TABLE ─────────────────────────────────────── */
+.comp-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.comp-table th {
+  background: var(--blue); color: white;
+  font-family: 'Syne', sans-serif;
+  padding: 10px 14px; text-align: left;
+  font-size: 0.8rem; font-weight: 600;
+}
+.comp-table th:first-child { border-radius: var(--r-sm) 0 0 0; }
+.comp-table th:last-child  { border-radius: 0 var(--r-sm) 0 0; }
+.comp-table td {
+  padding: 10px 14px; border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.comp-table tr:last-child td { border-bottom: none; }
+.comp-table tr:nth-child(even) td { background: var(--blue-ll); }
+.comp-table .before { color: var(--muted); font-style: italic; }
+.comp-table .after  { color: var(--blue);  font-weight: 500; }
+.comp-table .tag    { background: var(--orange); color: white; border-radius: 4px;
+                      padding: 1px 7px; font-size: 0.7rem; font-weight: 600; white-space: nowrap; }
+
+/* ── TRIAGE MATRIX ────────────────────────────────────────── */
+.triage-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+}
+.triage-cell {
+  border-radius: var(--r);
+  padding: 16px 18px;
+  border-left: 4px solid;
+}
+.triage-cell h4 { margin-bottom: 8px; }
+.triage-cell p  { font-size: 0.83rem; line-height: 1.5; }
+.t-a { border-color: var(--green); background: var(--green-l); }
+.t-b { border-color: var(--blue);  background: var(--blue-ll); }
+.t-c { border-color: var(--orange);background: var(--orange-l);}
+.t-d { border-color: #7c3aed;      background: #f5f0ff; }
+.t-d h4 { color: #7c3aed; }
+.t-time {
+  display: inline-block; margin-top: 8px;
+  font-size: 0.72rem; font-weight: 700;
+  background: rgba(0,0,0,0.07); padding: 2px 8px; border-radius: 10px;
+}
+
+/* ── STEP LIST ────────────────────────────────────────────── */
+.step-list { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+.step {
+  display: flex; gap: 12px; align-items: flex-start;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--r-sm); padding: 12px 14px;
+}
+.step-n {
+  width: 26px; height: 26px; flex-shrink: 0;
+  background: var(--blue); color: white; border-radius: 50%;
+  font-size: 0.75rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.step-body { font-size: 0.87rem; padding-top: 3px; }
+.step-body strong { display: block; color: var(--blue); margin-bottom: 2px; }
+
+/* ── WORKSHOP LEVELS ──────────────────────────────────────── */
+.ws-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.ws-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 20px;
+  box-shadow: var(--shadow);
+}
+.ws-card.level-2 { border-top: 3px solid var(--orange); }
+.ws-card.level-1 { border-top: 3px solid var(--blue); }
+.ws-level { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+            text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+
+/* ── DIVIDER ──────────────────────────────────────────────── */
+.divider {
+  border: none; border-top: 1px solid var(--border);
+  margin: 24px 0;
+}
+
+/* ── NOTE BOX ─────────────────────────────────────────────── */
+.note {
+  display: flex; gap: 10px; align-items: flex-start;
+  background: var(--blue-ll);
+  border: 1px solid rgba(0,48,135,0.12);
+  border-radius: var(--r-sm); padding: 12px 14px;
+  font-size: 0.83rem;
+}
+.note-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+
+/* ── SEQUENCE FLOW ────────────────────────────────────────── */
+.seq { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+.seq-step {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--r-sm); padding: 8px 14px;
+  font-size: 0.82rem; font-weight: 500; color: var(--ink);
+}
+.seq-arrow { color: var(--blue); font-weight: 700; font-size: 1.1rem; }
+
+/* ── MODAL OVERLAY ────────────────────────────────────────── */
+.modal-overlay {
+  display: none;
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,20,70,0.6);
+  backdrop-filter: blur(4px);
+  align-items: center; justify-content: center;
+  padding: 24px;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--white);
+  border-radius: 14px;
+  width: 100%; max-width: 660px;
+  max-height: 85vh; overflow-y: auto;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+  padding: 32px;
+}
+.modal-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 24px;
+}
+.modal-header h2 { font-size: 1.3rem; color: var(--blue); }
+.modal-close {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--bg); border: none; cursor: pointer;
+  font-size: 1.1rem; color: var(--muted);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: all 0.15s;
+}
+.modal-close:hover { background: var(--border); color: var(--ink); }
+
+/* ── AGENDA TABLE ─────────────────────────────────────────── */
+.agenda { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.agenda td { padding: 8px 10px; border-bottom: 1px solid var(--border); }
+.agenda td:first-child {
+  font-weight: 700; color: var(--blue);
+  font-family: 'Syne', sans-serif; white-space: nowrap; width: 70px;
+}
+.agenda tr:last-child td { border-bottom: none; }
+
+.q-list { list-style: none; padding: 0; }
+.q-list li {
+  padding: 8px 12px; background: var(--blue-ll);
+  border-radius: var(--r-sm); margin-top: 6px;
+  font-size: 0.85rem;
+}
+.q-list li::before { content: "?  "; font-weight: 700; color: var(--blue); }
+
+/* ── FOOTER ───────────────────────────────────────────────── */
+.footer {
+  background: var(--blue);
+  padding: 24px 40px;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.8rem;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer a { color: rgba(255,255,255,0.9); text-decoration: none; }
+
+/* ── PRINT ────────────────────────────────────────────────── */
+@media print {
+  .nav, .index-bar, .modal-overlay { display: none !important; }
+  body { background: white; font-size: 11pt; margin-top: 0; }
+  .hero { margin-top: 0; padding: 24px; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .section { page-break-before: always; }
+  .section:first-child { page-break-before: avoid; }
+  .card, .triage-cell, .ws-card { box-shadow: none; }
+  .page { max-width: 100%; padding: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">
+    <div class="nav-logo">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="34" height="34" rx="8" fill="#003087" stroke="#C04A00" stroke-width="2"/>
+        <text x="18" y="14" text-anchor="middle" fill="white" font-family="Syne,sans-serif" font-weight="800" font-size="7" letter-spacing="0.5">MENSYS</text>
+        <text x="18" y="26" text-anchor="middle" fill="#C04A00" font-family="Syne,sans-serif" font-weight="800" font-size="9">HJ</text>
+      </svg>
+    </div>
+    <span>Mensys x Henk Jekel</span>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="#s1"><span data-nl>Thomas</span><span data-en>Thomas</span></a>
+    <a class="nav-link" href="#s2">LinkedIn</a>
+    <a class="nav-link" href="#s3">Resellers</a>
+    <a class="nav-link" href="#s4"><span data-nl>Projecten</span><span data-en>Projects</span></a>
+    <a class="nav-link" href="#s5">RFI/RFQ</a>
+    <a class="nav-link" href="#s6">AI Workshops</a>
+  </div>
+  <div class="nav-actions">
+    <button class="lang-btn active" id="btn-nl" onclick="setLang('nl')">
+      <svg width="18" height="12" viewBox="0 0 18 12" xmlns="http://www.w3.org/2000/svg" style="border-radius:2px;flex-shrink:0">
+        <rect width="18" height="4" fill="#AE1C28"/>
+        <rect y="4" width="18" height="4" fill="white"/>
+        <rect y="8" width="18" height="4" fill="#21468B"/>
+      </svg>
+      NL
+    </button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">
+      <svg width="18" height="12" viewBox="0 0 18 12" xmlns="http://www.w3.org/2000/svg" style="border-radius:2px;flex-shrink:0">
+        <rect width="18" height="12" fill="#012169"/>
+        <path d="M0,0 L18,12 M18,0 L0,12" stroke="white" stroke-width="2.5"/>
+        <path d="M0,0 L18,12 M18,0 L0,12" stroke="#C8102E" stroke-width="1.5"/>
+        <path d="M9,0 L9,12 M0,6 L18,6" stroke="white" stroke-width="3"/>
+        <path d="M9,0 L9,12 M0,6 L18,6" stroke="#C8102E" stroke-width="2"/>
+      </svg>
+      EN
+    </button>
+    <button class="guide-btn" onclick="openModal()">
+      &#128218; <span data-nl>Handleiding</span><span data-en>Meeting Guide</span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span data-nl>Voorbereiding Meeting</span>
+      <span data-en>Meeting Preparation</span>
+    </div>
+    <h1 class="hero-title">
+      <span data-nl>Vijf plannen.<br><span style="color:white">Een richting.</span></span>
+      <span data-en>Five plans.<br><span style="color:white">One direction.</span></span>
+    </h1>
+    <p class="hero-subtitle" data-nl>Vrijdag 18 april 2026, 13:30 -- uitgewerkte aanpak voor Mensys op de vijf thema's die er echt toe doen.</p>
+    <p class="hero-subtitle" data-en>Friday 18 April 2026, 13:30 -- concrete approach for Mensys across the five topics that truly matter.</p>
+    <div class="hero-meta">
+      <div class="hero-tag"><div class="dot"></div><span data-nl>Thomas Coaching</span><span data-en>Thomas Coaching</span></div>
+      <div class="hero-tag"><div class="dot"></div>Resellers</div>
+      <div class="hero-tag"><div class="dot"></div><span data-nl>Projecten spotten</span><span data-en>Spot Projects</span></div>
+      <div class="hero-tag"><div class="dot"></div>RFI/RFQ</div>
+      <div class="hero-tag"><div class="dot"></div><span data-nl>AI Workshops</span><span data-en>AI Workshops</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- INDEX BAR -->
+<div class="index-bar">
+  <a class="idx-item" href="#s1"><div class="idx-num">1</div><span data-nl>Thomas: Visie & Plan</span><span data-en>Thomas: Vision & Plan</span></a>
+  <a class="idx-item" href="#s2"><div class="idx-num">2</div><span data-nl>LinkedIn Analyse</span><span data-en>LinkedIn Analysis</span></a>
+  <a class="idx-item" href="#s3"><div class="idx-num">3</div><span data-nl>Resellers</span><span data-en>Resellers</span></a>
+  <a class="idx-item" href="#s4"><div class="idx-num">4</div><span data-nl>Projecten</span><span data-en>Projects</span></a>
+  <a class="idx-item" href="#s5">RFI/RFQ</a>
+  <a class="idx-item" href="#s6">AI Workshops</a>
+</div>
+
+<div class="page">
+
+<!-- ========================================================
+     SECTION 1: THOMAS COACHING
+     ======================================================== -->
+<section class="section" id="s1">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="section-title-wrap">
+      <div class="section-label" data-nl>Thomas Coaching</div>
+      <div class="section-label" data-en>Thomas Coaching</div>
+      <h2 data-nl>Visie, Missie en Plan</h2>
+      <h2 data-en>Vision, Mission and Plan</h2>
+    </div>
+    <div>
+      <span class="badge badge-blue" data-nl>Het grote plaatje</span>
+      <span class="badge badge-blue" data-en>The big picture</span>
+    </div>
+  </div>
+
+  <!-- Vision + Mission -->
+  <div class="grid-2" style="margin-bottom:16px">
+    <div class="card card-blue">
+      <h4 data-nl style="color:var(--blue)">Visie 2026</h4>
+      <h4 data-en style="color:var(--blue)">Vision 2026</h4>
+      <p data-nl style="margin-top:8px">Thomas is de commerciele groeimotor van Mensys Nederland. Hij opent deuren, bouwt relaties en zet structureel nieuwe accounts op het bord.</p>
+      <p data-en style="margin-top:8px">Thomas is the commercial growth engine of Mensys Netherlands. He opens doors, builds relationships and consistently brings new accounts to the table.</p>
+    </div>
+    <div class="card card-orange">
+      <h4 style="color:var(--orange)" data-nl>Missie Q2-Q4 2026</h4>
+      <h4 style="color:var(--orange)" data-en>Mission Q2-Q4 2026</h4>
+      <p data-nl style="margin-top:8px">Via systematische multi-channel outreach (LinkedIn + email + telefoon) structureel nieuwe klantrelaties opbouwen. Niet ad hoc, maar als repeatable proces.</p>
+      <p data-en style="margin-top:8px">Through systematic multi-channel outreach (LinkedIn + email + phone) build new client relationships consistently. Not ad hoc, but as a repeatable process.</p>
+    </div>
+  </div>
+
+  <!-- Cascade -->
+  <div class="card">
+    <h3 data-nl style="margin-bottom:18px">Plan: terugrekenen van jaar naar week</h3>
+    <h3 data-en style="margin-bottom:18px">Plan: counting back from year to week</h3>
+    <div class="cascade">
+      <div class="cascade-item">
+        <div class="cascade-label" data-nl>Jaar 2026</div>
+        <div class="cascade-label" data-en>Year 2026</div>
+        <div class="cascade-content">
+          <strong data-nl>Jaardoelen (in te vullen met Menso)</strong>
+          <strong data-en>Annual targets (to be set with Menso)</strong>
+          <span data-nl>[X] nieuwe accounts gesloten &bull; [Y] resellers geactiveerd &bull; [Z] euro nieuwe pipeline &bull; Thomas volledig zelfstandig</span>
+          <span data-en>[X] new accounts closed &bull; [Y] resellers activated &bull; [Z] euro new pipeline &bull; Thomas fully independent</span>
+        </div>
+      </div>
+      <div class="cascade-item">
+        <div class="cascade-label" data-nl>Halfjaar Q3</div>
+        <div class="cascade-label" data-en>Half Year Q3</div>
+        <div class="cascade-content">
+          <strong data-nl>Eerste reseller-kanaal actief, pipeline consistent gevuld</strong>
+          <strong data-en>First reseller channel active, pipeline consistently filled</strong>
+          <span data-nl>Helft jaardoelen bereikt. Thomas werkt met vaste sequenties en rapporteert wekelijks zonder aansturen.</span>
+          <span data-en>Half of annual targets reached. Thomas works with fixed sequences and reports weekly without prompting.</span>
+        </div>
+      </div>
+      <div class="cascade-item">
+        <div class="cascade-label">Q2 (nu)</div>
+        <div class="cascade-content">
+          <strong data-nl>Basis leggen, eerste resultaten boeken</strong>
+          <strong data-en>Build the foundation, book first results</strong>
+          <span data-nl>ICP en messaging vastleggen. Sequenties live. 10-15 eerste gekwalificeerde gesprekken. Thomas coacht mee en krijgt wekelijkse begeleiding.</span>
+          <span data-en>Lock in ICP and messaging. Sequences live. 10-15 first qualified conversations. Thomas is coached and receives weekly guidance.</span>
+        </div>
+      </div>
+      <div class="cascade-item">
+        <div class="cascade-label" data-nl>Maand (rolling)</div>
+        <div class="cascade-label" data-en>Month (rolling)</div>
+        <div class="cascade-content">
+          <strong data-nl>Maandelijks ritme</strong>
+          <strong data-en>Monthly rhythm</strong>
+          <span data-nl>3-5 nieuwe gekwalificeerde contacten &bull; 1-2 concrete afspraken &bull; 1-2 LinkedIn posts &bull; Maandrapportage pipeline</span>
+          <span data-en>3-5 new qualified contacts &bull; 1-2 concrete appointments &bull; 1-2 LinkedIn posts &bull; Monthly pipeline report</span>
+        </div>
+      </div>
+      <div class="cascade-item">
+        <div class="cascade-label" data-nl>Week</div>
+        <div class="cascade-label" data-en>Week</div>
+        <div class="cascade-content">
+          <strong data-nl>Wekelijkse acties (minimum)</strong>
+          <strong data-en>Weekly actions (minimum)</strong>
+          <span data-nl>5-10 outreaches (LinkedIn + email) &bull; 2-3 follow-ups &bull; 1 telefonisch contact &bull; Check-in met Henk (15 min) &bull; Actielijst bijwerken</span>
+          <span data-en>5-10 outreaches (LinkedIn + email) &bull; 2-3 follow-ups &bull; 1 phone contact &bull; Check-in with Henk (15 min) &bull; Update action list</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 Work Areas -->
+  <div style="margin-top:14px">
+    <div class="card">
+      <h3 data-nl style="margin-bottom:14px">Vijf werkgebieden voor Thomas</h3>
+      <h3 data-en style="margin-bottom:14px">Five work areas for Thomas</h3>
+      <div class="grid-3">
+        <div>
+          <div class="badge badge-blue" style="margin-bottom:8px" data-nl>1. Content</div>
+          <div class="badge badge-blue" style="margin-bottom:8px" data-en>1. Content</div>
+          <p style="font-size:0.83rem" data-nl>LinkedIn posts: minder "ik observeer", meer "wij losten dit op voor [klanttype]". Client-first framing.</p>
+          <p style="font-size:0.83rem" data-en>LinkedIn posts: less "I observe", more "we solved this for [client type]". Client-first framing.</p>
+        </div>
+        <div>
+          <div class="badge badge-orange" style="margin-bottom:8px" data-nl>2. Outreach</div>
+          <div class="badge badge-orange" style="margin-bottom:8px" data-en>2. Outreach</div>
+          <p style="font-size:0.83rem" data-nl>Multi-channel sequentie met LinkedIn connectie, email + follow-up telefoon. Geen silo's meer.</p>
+          <p style="font-size:0.83rem" data-en>Multi-channel sequence with LinkedIn connection, email + follow-up phone. No more silos.</p>
+        </div>
+        <div>
+          <div class="badge badge-green" style="margin-bottom:8px" data-nl>3. Resellers</div>
+          <div class="badge badge-green" style="margin-bottom:8px" data-en>3. Resellers</div>
+          <p style="font-size:0.83rem" data-nl>Apart spoor: reseller partnership propositie en activatiestrategie (zie sectie 3).</p>
+          <p style="font-size:0.83rem" data-en>Separate track: reseller partnership proposition and activation strategy (see section 3).</p>
+        </div>
+        <div>
+          <div class="badge badge-blue" style="margin-bottom:8px" data-nl>4. Pipeline</div>
+          <div class="badge badge-blue" style="margin-bottom:8px" data-en>4. Pipeline</div>
+          <p style="font-size:0.83rem" data-nl>CRM up-to-date, wekelijkse rapportage, duidelijke stagering van leads (koud / warm / afspraak / offerte).</p>
+          <p style="font-size:0.83rem" data-en>CRM up to date, weekly reporting, clear lead staging (cold / warm / meeting / quote).</p>
+        </div>
+        <div>
+          <div class="badge badge-orange" style="margin-bottom:8px" data-nl>5. ICP scherp</div>
+          <div class="badge badge-orange" style="margin-bottom:8px" data-en>5. Sharp ICP</div>
+          <p style="font-size:0.83rem" data-nl>Wie is de perfecte klant voor Mensys? Welke sector, welke grootte, welke pijn? Dat scherp hebben maakt alles sneller.</p>
+          <p style="font-size:0.83rem" data-en>Who is the ideal Mensys customer? Which sector, size, pain point? Getting that sharp accelerates everything.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================================================
+     SECTION 2: THOMAS LINKEDIN
+     ======================================================== -->
+<section class="section" id="s2">
+  <div class="section-header">
+    <div class="section-num" style="background:var(--orange)">2</div>
+    <div class="section-title-wrap">
+      <div class="section-label" data-nl>Thomas Visser</div>
+      <div class="section-label" data-en>Thomas Visser</div>
+      <h2 data-nl>LinkedIn Analyse + Verbeterplan</h2>
+      <h2 data-en>LinkedIn Analysis + Improvement Plan</h2>
+    </div>
+    <span class="badge badge-orange" data-nl>Direct inzetbaar</span>
+    <span class="badge badge-orange" data-en>Immediately applicable</span>
+  </div>
+
+  <div class="card card-green" style="margin-bottom:14px">
+    <h4 data-nl style="color:var(--green)">Wat goed gaat</h4>
+    <h4 data-en style="color:var(--green)">What is working well</h4>
+    <div class="pill-list">
+      <div class="pill" data-nl>Consistente postfrequentie (wekelijks)</div>
+      <div class="pill" data-en>Consistent post frequency (weekly)</div>
+      <div class="pill" data-nl>Storytelling aanwezig (klantcases, analogieen)</div>
+      <div class="pill" data-en>Storytelling present (client cases, analogies)</div>
+      <div class="pill" data-nl>Actief sales training certif. behaald feb 2026</div>
+      <div class="pill" data-en>Active sales training cert. obtained Feb 2026</div>
+      <div class="pill" data-nl>Proactief events opzoeken (Workday post)</div>
+      <div class="pill" data-en>Proactively seeks out events (Workday post)</div>
+      <div class="pill" data-nl>Menso liket bijna alles = goede support basis</div>
+      <div class="pill" data-en>Menso likes almost everything = good support base</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 data-nl style="margin-bottom:16px">Verbeterpunten met actie</h3>
+    <h3 data-en style="margin-bottom:16px">Improvement points with action</h3>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th data-nl>Element</th><th data-nl>Nu (voor)</th><th data-nl>Beter (na)</th><th>Prioriteit</th>
+          <th data-en>Element</th><th data-en>Now (before)</th><th data-en>Better (after)</th><th data-en>Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong data-nl>Headline</strong><strong data-en>Headline</strong></td>
+          <td class="before" data-nl>"Business Developer at software.eu | MSc. Circular Economy"</td>
+          <td class="before" data-en>"Business Developer at software.eu | MSc. Circular Economy"</td>
+          <td class="after" data-nl>"Software zonder creditcard, zonder gedoe | Mensys / software.eu"</td>
+          <td class="after" data-en>"Software without credit cards, without hassle | Mensys / software.eu"</td>
+          <td><span class="tag">Hoog</span></td>
+        </tr>
+        <tr>
+          <td><strong data-nl>About</strong><strong data-en>About</strong></td>
+          <td class="before" data-nl>1 regel. Geen ICP, geen CTA, geen Mensys context.</td>
+          <td class="before" data-en>1 line. No ICP, no CTA, no Mensys context.</td>
+          <td class="after" data-nl>3-4 alineas: wie help je, welk probleem los je op, wat maakt Mensys uniek, CTA</td>
+          <td class="after" data-en>3-4 paragraphs: who do you help, what problem do you solve, what makes Mensys unique, CTA</td>
+          <td><span class="tag">Hoog</span></td>
+        </tr>
+        <tr>
+          <td><strong data-nl>Content frame</strong><strong data-en>Content frame</strong></td>
+          <td class="before" data-nl>"Ik observeer dit probleem in de markt..."</td>
+          <td class="before" data-en>"I observe this problem in the market..."</td>
+          <td class="after" data-nl>"Wij losten dit op voor [klanttype]. Hier is hoe." + sterke CTA</td>
+          <td class="after" data-en>"We solved this for [client type]. Here is how." + strong CTA</td>
+          <td><span class="tag">Hoog</span></td>
+        </tr>
+        <tr>
+          <td><strong data-nl>Featured sectie</strong><strong data-en>Featured section</strong></td>
+          <td class="before" data-nl>Leeg of niet gebruikt</td>
+          <td class="before" data-en>Empty or unused</td>
+          <td class="after" data-nl>Beste klantcase of "Gratis software audit" als lead magnet</td>
+          <td class="after" data-en>Best client case or "Free software audit" as lead magnet</td>
+          <td><span class="tag" style="background:var(--blue)">Medium</span></td>
+        </tr>
+        <tr>
+          <td><strong data-nl>Reseller content</strong><strong data-en>Reseller content</strong></td>
+          <td class="before" data-nl>Nul posts over reseller partnership propositie</td>
+          <td class="before" data-en>Zero posts about reseller partnership proposition</td>
+          <td class="after" data-nl>1x per maand: "Hoe wij implementatiepartners helpen met billing & licenties"</td>
+          <td class="after" data-en>1x per month: "How we help implementation partners with billing & licences"</td>
+          <td><span class="tag" style="background:var(--blue)">Medium</span></td>
+        </tr>
+        <tr>
+          <td><strong data-nl>ICP doelgroep</strong><strong data-en>ICP target audience</strong></td>
+          <td class="before" data-nl>Posts wisselen tussen inkopers, IT-managers en resellers door elkaar</td>
+          <td class="before" data-en>Posts alternate between procurement, IT managers and resellers</td>
+          <td class="after" data-nl>Per week 1 duidelijke doelgroep. Consistentere messaging per ICP-segment.</td>
+          <td class="after" data-en>Per week 1 clear target audience. More consistent messaging per ICP segment.</td>
+          <td><span class="tag" style="background:var(--green)">Later</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note" style="margin-top:12px">
+    <div class="note-icon">&#128161;</div>
+    <div data-nl><strong>Kern observatie:</strong> Thomas post als thought leader maar belt en kwalificeert niet systematisch. De posts zijn de top van de funnel. Er is geen middenstuk (opvolging, sequentie, afspraken). Dat is precies de gap die jij vult.</div>
+    <div data-en><strong>Key observation:</strong> Thomas posts as a thought leader but does not call and qualify systematically. The posts are the top of the funnel. There is no middle section (follow-up, sequence, appointments). That is exactly the gap you fill.</div>
+  </div>
+</section>
+
+
+<!-- ========================================================
+     SECTION 3: RESELLERS
+     ======================================================== -->
+<section class="section" id="s3">
+  <div class="section-header">
+    <div class="section-num" style="background:var(--green)">3</div>
+    <div class="section-title-wrap">
+      <div class="section-label" data-nl>Resellers</div>
+      <div class="section-label" data-en>Resellers</div>
+      <h2 data-nl>Vinden en Reactiveren</h2>
+      <h2 data-en>Find and Reactivate</h2>
+    </div>
+    <span class="badge badge-green" data-nl>Twee sporen</span>
+    <span class="badge badge-green" data-en>Two tracks</span>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3 data-nl style="color:var(--blue); margin-bottom:14px">Spoor A: Nieuwe resellers</h3>
+      <h3 data-en style="color:var(--blue); margin-bottom:14px">Track A: New resellers</h3>
+
+      <h4 data-nl style="margin-bottom:8px">Bronnen</h4>
+      <h4 data-en style="margin-bottom:8px">Sources</h4>
+      <div class="step-list">
+        <div class="step">
+          <div class="step-n">1</div>
+          <div class="step-body">
+            <strong data-nl>KvK SBI-codes</strong>
+            <strong data-en>KvK SBI codes</strong>
+            <span data-nl>46.51 (Groothandel software/hardware) + 47.41 (Computerdetailhandel). Gerichte lijst van relevante bedrijven.</span>
+            <span data-en>46.51 (Wholesale software/hardware) + 47.41 (Computer retail). Targeted list of relevant companies.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">2</div>
+          <div class="step-body">
+            <strong data-nl>LinkedIn Sales Navigator</strong>
+            <strong data-en>LinkedIn Sales Navigator</strong>
+            <span data-nl>Zoekterm: "IT reseller", "MSP", "systeembeheer", "software partner" + regio Nederland + 2-50 medewerkers.</span>
+            <span data-en>Search terms: "IT reseller", "MSP", "systems management", "software partner" + region Netherlands + 2-50 employees.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">3</div>
+          <div class="step-body">
+            <strong data-nl>Vendor partner portals</strong>
+            <strong data-en>Vendor partner portals</strong>
+            <span data-nl>Microsoft Partner Finder, Adobe Partner, Sophos Partner: wie zijn actieve partners in NL? Die kennen de markt al.</span>
+            <span data-en>Microsoft Partner Finder, Adobe Partner, Sophos Partner: who are active partners in NL? They already know the market.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">4</div>
+          <div class="step-body">
+            <strong data-nl>Dutch IT Channel + CompuBase</strong>
+            <strong data-en>Dutch IT Channel + CompuBase</strong>
+            <span data-nl>Brancheoverzichten, Dutch IT Channel Awards nominatielijsten (beste software reseller, MKB partner).</span>
+            <span data-en>Industry overviews, Dutch IT Channel Awards nomination lists (best software reseller, SME partner).</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 data-nl style="color:var(--orange); margin-bottom:14px">Spoor B: Slapende accounts reactiveren</h3>
+      <h3 data-en style="color:var(--orange); margin-bottom:14px">Track B: Reactivate dormant accounts</h3>
+
+      <h4 data-nl style="margin-bottom:8px">Definitie: wanneer is een account "slapend"?</h4>
+      <h4 data-en style="margin-bottom:8px">Definition: when is an account "dormant"?</h4>
+      <div class="card card-orange" style="margin-bottom:12px">
+        <p data-nl style="font-size:0.85rem">Geen aankoop of contact in de afgelopen 6+ maanden. Eerdere relatie bestaat (ze kenden Mensys al). Potentie is nog aanwezig.</p>
+        <p data-en style="font-size:0.85rem">No purchase or contact in the past 6+ months. Previous relationship exists (they already knew Mensys). Potential still present.</p>
+      </div>
+
+      <h4 data-nl style="margin-bottom:8px">Signalen dat ze rijp zijn voor re-activatie</h4>
+      <h4 data-en style="margin-bottom:8px">Signals they are ready for reactivation</h4>
+      <div class="pill-list" style="margin-bottom:14px">
+        <div class="pill" data-nl>Nieuw personeel aangenomen</div>
+        <div class="pill" data-en>New staff hired</div>
+        <div class="pill" data-nl>Groei in LinkedIn activiteit</div>
+        <div class="pill" data-en>Growth in LinkedIn activity</div>
+        <div class="pill" data-nl>Vacature voor IT-functie</div>
+        <div class="pill" data-en>IT vacancy posted</div>
+        <div class="pill" data-nl>Contractverlenging in zicht</div>
+        <div class="pill" data-en>Contract renewal approaching</div>
+      </div>
+
+      <h4 data-nl style="margin-bottom:8px">Re-activatie sequentie (3 stappen, 2 weken)</h4>
+      <h4 data-en style="margin-bottom:8px">Reactivation sequence (3 steps, 2 weeks)</h4>
+      <div class="seq">
+        <div class="seq-step" data-nl>Dag 1: LinkedIn like + comment</div>
+        <div class="seq-step" data-en>Day 1: LinkedIn like + comment</div>
+        <div class="seq-arrow">&#8594;</div>
+        <div class="seq-step" data-nl>Dag 4: Persoonlijk bericht</div>
+        <div class="seq-step" data-en>Day 4: Personal message</div>
+        <div class="seq-arrow">&#8594;</div>
+        <div class="seq-step" data-nl>Dag 10: Telefonisch</div>
+        <div class="seq-step" data-en>Day 10: Phone call</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <h4 data-nl style="color:var(--blue); margin-bottom:10px">De Mensys Reseller Propositie (kern boodschap)</h4>
+    <h4 data-en style="color:var(--blue); margin-bottom:10px">The Mensys Reseller Proposition (core message)</h4>
+    <p data-nl style="font-size:0.88rem">"Jij focust op implementatie en je klant. Wij regelen de billing voor de dure licenties en schieten ze voor. Geen creditcard nodig, geen cashflow probleem, geen gedoe met verlengingen. Jij factureert je uren, wij de licenties." (gebaseerd op Thomas zijn Workday-post)</p>
+    <p data-en style="font-size:0.88rem">"You focus on implementation and your client. We handle the billing for expensive licences and advance them. No credit card needed, no cash flow problem, no hassle with renewals. You invoice your hours, we invoice the licences." (based on Thomas' Workday post)</p>
+  </div>
+</section>
+
+
+<!-- ========================================================
+     SECTION 4: PROJECTEN SPOTTEN
+     ======================================================== -->
+<section class="section" id="s4">
+  <div class="section-header">
+    <div class="section-num" style="background:#6d28d9">4</div>
+    <div class="section-title-wrap">
+      <div class="section-label" data-nl>Exotische software</div>
+      <div class="section-label" data-en>Exotic software</div>
+      <h2 data-nl>Proactief Projecten Spotten</h2>
+      <h2 data-en>Proactively Spot Projects</h2>
+    </div>
+    <span class="badge" style="background:#f0ebff;color:#6d28d9" data-nl>Vroeg in de markt</span>
+    <span class="badge" style="background:#f0ebff;color:#6d28d9" data-en>Early in the market</span>
+  </div>
+
+  <div class="note" style="margin-bottom:16px">
+    <div class="note-icon">&#128270;</div>
+    <div data-nl>Het doel: Mensys benaderen <em>voordat</em> een RFI binnen komt. Door de signalen te herkennen die voorafgaan aan een softwaredeal, kom je eerder in beeld dan de concurrentie.</div>
+    <div data-en>The goal: approach Mensys <em>before</em> an RFI arrives. By recognising signals that precede a software deal, you get on the radar earlier than the competition.</div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3 data-nl style="margin-bottom:14px">Signaaltypen</h3>
+      <h3 data-en style="margin-bottom:14px">Signal types</h3>
+      <div class="step-list">
+        <div class="step">
+          <div class="step-n" style="background:#6d28d9">A</div>
+          <div class="step-body">
+            <strong data-nl>LinkedIn activiteit</strong>
+            <strong data-en>LinkedIn activity</strong>
+            <span data-nl>Posts over "zoeken naar oplossing", "implementatie gestart", "nieuwe tool". Saved searches op termen als "software implementatie", "licenties", "ERP".</span>
+            <span data-en>Posts about "looking for a solution", "implementation started", "new tool". Saved searches for terms like "software implementation", "licences", "ERP".</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n" style="background:#6d28d9">B</div>
+          <div class="step-body">
+            <strong data-nl>Vacatures als vroeg signaal</strong>
+            <strong data-en>Vacancies as early signal</strong>
+            <span data-nl>"IT manager", "systeembeheerder", "software architect" = organisatie groeit en gaat straks nieuwe software inkopen.</span>
+            <span data-en>"IT manager", "systems administrator", "software architect" = organisation is growing and will soon procure new software.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n" style="background:#6d28d9">C</div>
+          <div class="step-body">
+            <strong>Tenders.overheid.nl</strong>
+            <span data-nl>Wekelijkse scan op softwareopdrachten in aanbestedingen. Vroeg reageren op gepubliceerde tenders of erin vermeld worden als leverancier.</span>
+            <span data-en>Weekly scan for software contracts in public tenders. React early to published tenders or get mentioned as a supplier.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n" style="background:#6d28d9">D</div>
+          <div class="step-body">
+            <strong data-nl>Vendor partner portals</strong>
+            <strong data-en>Vendor partner portals</strong>
+            <span data-nl>Deal registrations en partner deal boards bij leveranciers waar Mensys mee samenwerkt. Zij signaleren ook kansen.</span>
+            <span data-en>Deal registrations and partner deal boards with vendors Mensys works with. They also signal opportunities.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 data-nl style="margin-bottom:14px">Werkritme per frequentie</h3>
+      <h3 data-en style="margin-bottom:14px">Working rhythm by frequency</h3>
+
+      <div style="margin-bottom:12px">
+        <span class="badge badge-green" data-nl>Dagelijks (10 min)</span>
+        <span class="badge badge-green" data-en>Daily (10 min)</span>
+        <ul style="margin-top:8px; padding-left:16px; font-size:0.83rem; line-height:1.8">
+          <li data-nl>LinkedIn saved searches doorlopen</li>
+          <li data-en>Browse LinkedIn saved searches</li>
+          <li data-nl>Alerts van Google op sleuteltermen</li>
+          <li data-en>Google alerts on key terms</li>
+        </ul>
+      </div>
+      <hr class="divider">
+      <div style="margin-bottom:12px">
+        <span class="badge badge-blue" data-nl>Wekelijks (30 min)</span>
+        <span class="badge badge-blue" data-en>Weekly (30 min)</span>
+        <ul style="margin-top:8px; padding-left:16px; font-size:0.83rem; line-height:1.8">
+          <li data-nl>Tenders.overheid.nl scan</li>
+          <li data-en>Tenders.overheid.nl scan</li>
+          <li data-nl>Vacatureborden (Indeed, LinkedIn Jobs)</li>
+          <li data-en>Job boards (Indeed, LinkedIn Jobs)</li>
+          <li data-nl>Dutch IT Channel nieuws</li>
+          <li data-en>Dutch IT Channel news</li>
+        </ul>
+      </div>
+      <hr class="divider">
+      <div>
+        <span class="badge badge-orange" data-nl>Maandelijks (1 uur)</span>
+        <span class="badge badge-orange" data-en>Monthly (1 hour)</span>
+        <ul style="margin-top:8px; padding-left:16px; font-size:0.83rem; line-height:1.8">
+          <li data-nl>Vendor partner portals checken</li>
+          <li data-en>Check vendor partner portals</li>
+          <li data-nl>Events en beurzen in de kalender</li>
+          <li data-en>Events and trade shows in the calendar</li>
+          <li data-nl>Review: welke signalen hebben geld opgeleverd?</li>
+          <li data-en>Review: which signals generated revenue?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================================================
+     SECTION 5: RFI / RFQ
+     ======================================================== -->
+<section class="section" id="s5">
+  <div class="section-header">
+    <div class="section-num" style="background:var(--red)">5</div>
+    <div class="section-title-wrap">
+      <div class="section-label" data-nl>Operationeel</div>
+      <div class="section-label" data-en>Operational</div>
+      <h2 data-nl>RFI/RFQ Tsunami Stroomlijnen</h2>
+      <h2 data-en>Streamline the RFI/RFQ Tsunami</h2>
+    </div>
+    <span class="badge badge-red" data-nl>Tijdwinst voor Menso</span>
+    <span class="badge badge-red" data-en>Time gain for Menso</span>
+  </div>
+
+  <div class="note" style="background:var(--red-l); border-color:rgba(224,51,76,0.15); margin-bottom:16px">
+    <div class="note-icon">&#9889;</div>
+    <div data-nl><strong>Het probleem:</strong> elke inkomende RFI/RFQ kost tijd om te beoordelen, uit te zoeken en te beantwoorden. Zonder systeem wordt dit een tsunami die Menso en Ermioni opslokt. Met triage wordt 70% afgehandeld zonder escalatie.</div>
+    <div data-en><strong>The problem:</strong> every incoming RFI/RFQ takes time to assess, research and answer. Without a system, this becomes a tsunami that swallows Menso and Ermioni. With triage, 70% is handled without escalation.</div>
+  </div>
+
+  <div class="triage-grid">
+    <div class="triage-cell t-a">
+      <h4 data-nl>Type A: Standaard</h4>
+      <h4 data-en>Type A: Standard</h4>
+      <p data-nl>Bekende software, bekende klant, standaard voorwaarden. Thomas of Henk handelt af via template.</p>
+      <p data-en>Known software, known client, standard terms. Thomas or Henk handles via template.</p>
+      <div class="t-time" data-nl>Afhandelen in 15-30 min</div>
+      <div class="t-time" data-en>Handle in 15-30 min</div>
+    </div>
+    <div class="triage-cell t-b">
+      <h4 data-nl>Type B: Normaal</h4>
+      <h4 data-en>Type B: Normal</h4>
+      <p data-nl>Iets bijzonders (nieuwe klant, meerdere producten, speciale voorwaarden). Research nodig, maar behapbaar.</p>
+      <p data-en>Something special (new client, multiple products, special terms). Research needed, but manageable.</p>
+      <div class="t-time" data-nl>1-3 uur research + antwoord</div>
+      <div class="t-time" data-en>1-3 hours research + response</div>
+    </div>
+    <div class="triage-cell t-c">
+      <h4 data-nl>Type C: Complex</h4>
+      <h4 data-en>Type C: Complex</h4>
+      <p data-nl>Onbekende software, grote deal, speciale contractuele eisen. Altijd naar Menso ter review.</p>
+      <p data-en>Unknown software, large deal, special contractual requirements. Always to Menso for review.</p>
+      <div class="t-time" data-nl>Menso review vereist</div>
+      <div class="t-time" data-en>Menso review required</div>
+    </div>
+    <div class="triage-cell t-d">
+      <h4>Type D: AI-pipeline</h4>
+      <p data-nl>Grote volumes repetitieve RFQ's. Claude verwerkt de intake, schrijft concept-antwoorden, vraagt bevestiging. (Al uitgewerkt in apart document.)</p>
+      <p data-en>Large volumes of repetitive RFQs. Claude processes the intake, drafts responses, requests confirmation. (Already detailed in a separate document.)</p>
+      <div class="t-time" data-nl>Geautomatiseerd met menselijke review</div>
+      <div class="t-time" data-en>Automated with human review</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <h3 data-nl style="margin-bottom:14px">Minimale structuur om morgen te beginnen</h3>
+    <h3 data-en style="margin-bottom:14px">Minimal structure to start tomorrow</h3>
+    <div class="grid-3">
+      <div>
+        <h4 data-nl style="color:var(--blue); margin-bottom:6px">Template bibliotheek</h4>
+        <h4 data-en style="color:var(--blue); margin-bottom:6px">Template library</h4>
+        <p data-nl style="font-size:0.82rem">Antwoordsjablonen per software-categorie. Menso schrijft 1x goed, Thomas gebruikt ze daarna.</p>
+        <p data-en style="font-size:0.82rem">Response templates per software category. Menso writes them once correctly, Thomas uses them from then on.</p>
+      </div>
+      <div>
+        <h4 data-nl style="color:var(--blue); margin-bottom:6px">Vaste antwoordtijden</h4>
+        <h4 data-en style="color:var(--blue); margin-bottom:6px">Fixed response times</h4>
+        <p data-nl style="font-size:0.82rem">Communiceer naar klanten: Type A binnen 4 uur, Type B binnen 1 werkdag, Type C binnen 2 werkdagen.</p>
+        <p data-en style="font-size:0.82rem">Communicate to clients: Type A within 4 hours, Type B within 1 working day, Type C within 2 working days.</p>
+      </div>
+      <div>
+        <h4 data-nl style="color:var(--blue); margin-bottom:6px">Wekelijks batch moment</h4>
+        <h4 data-en style="color:var(--blue); margin-bottom:6px">Weekly batch moment</h4>
+        <p data-nl style="font-size:0.82rem">Type B/C aanvragen bundelen op een vast moment (bijv. dinsdag 10:00) zodat Menso niet constant onderbroken wordt.</p>
+        <p data-en style="font-size:0.82rem">Bundle Type B/C requests at a fixed moment (e.g. Tuesday 10:00) so Menso is not constantly interrupted.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================================================
+     SECTION 6: AI WORKSHOPS
+     ======================================================== -->
+<section class="section" id="s6">
+  <div class="section-header">
+    <div class="section-num" style="background:#0891b2">6</div>
+    <div class="section-title-wrap">
+      <div class="section-label" data-nl>Initiatief Henk via Menso's netwerk</div>
+      <div class="section-label" data-en>Henk's initiative via Menso's network</div>
+      <h2 data-nl>AI Workshops: Eerste Concept</h2>
+      <h2 data-en>AI Workshops: First Concept</h2>
+    </div>
+    <span class="badge" style="background:#e0f5f9;color:#0891b2" data-nl>Separaat initiatief</span>
+    <span class="badge" style="background:#e0f5f9;color:#0891b2" data-en>Separate initiative</span>
+  </div>
+
+  <div class="note" style="background:#e0f5f9; border-color:rgba(8,145,178,0.2); margin-bottom:16px">
+    <div class="note-icon">&#9881;</div>
+    <div data-nl><strong>Context:</strong> Menso signaleert grote vraag naar AI-workshops bij zijn klanten. Maar als distributeur kan hij de klanten van zijn resellers niet zelf benaderen (not done in deze wereld). Henk voert de workshops uit, Menso faciliteert de introductie. Zakelijke afspraken nog te maken.</div>
+    <div data-en><strong>Context:</strong> Menso signals strong demand for AI workshops among his clients. But as a distributor he cannot approach his resellers' clients directly (not done in this world). Henk delivers the workshops, Menso facilitates the introduction. Business terms still to be agreed.</div>
+  </div>
+
+  <div class="ws-grid">
+    <div class="ws-card level-1">
+      <div class="ws-level" data-nl>Niveau 1: Beginner</div>
+      <div class="ws-level" data-en>Level 1: Beginner</div>
+      <h3 data-nl>AI voor Dagelijks Werk</h3>
+      <h3 data-en>AI for Daily Work</h3>
+      <hr class="divider">
+      <ul style="padding-left:16px; font-size:0.85rem; line-height:2">
+        <li data-nl>Wat is AI en wat is het niet</li>
+        <li data-en>What AI is and what it is not</li>
+        <li data-nl>ChatGPT, Copilot, Claude in de praktijk</li>
+        <li data-en>ChatGPT, Copilot, Claude in practice</li>
+        <li data-nl>Prompting basics: hoe vraag je het goed</li>
+        <li data-en>Prompting basics: how to ask correctly</li>
+        <li data-nl>Emails schrijven, samenvatten, plannen</li>
+        <li data-en>Writing emails, summarising, planning</li>
+        <li data-nl>Veiligheid en verantwoord gebruik</li>
+        <li data-en>Safety and responsible use</li>
+      </ul>
+      <hr class="divider">
+      <div class="grid-2" style="font-size:0.8rem; gap:8px; margin-top:4px">
+        <div><strong data-nl>Duur:</strong><strong data-en>Duration:</strong> <span data-nl>Halve dag (3-4 uur)</span><span data-en>Half day (3-4 hours)</span></div>
+        <div><strong data-nl>Groep:</strong><strong data-en>Group:</strong> <span data-nl>Max 12 personen</span><span data-en>Max 12 people</span></div>
+        <div><strong data-nl>Formaat:</strong><strong data-en>Format:</strong> <span data-nl>Op locatie of online</span><span data-en>On-site or online</span></div>
+        <div><strong data-nl>Prijs:</strong><strong data-en>Price:</strong> <span data-nl>750-1.000 per sessie</span><span data-en>750-1,000 per session</span></div>
+      </div>
+    </div>
+
+    <div class="ws-card level-2">
+      <div class="ws-level" data-nl>Niveau 2: Gevorderd</div>
+      <div class="ws-level" data-en>Level 2: Advanced</div>
+      <h3 data-nl>AI als Werktuig: Productiviteit en Automatisering</h3>
+      <h3 data-en>AI as a Tool: Productivity and Automation</h3>
+      <hr class="divider">
+      <ul style="padding-left:16px; font-size:0.85rem; line-height:2">
+        <li data-nl>Gevorderd prompting en persona's</li>
+        <li data-en>Advanced prompting and personas</li>
+        <li data-nl>Workflows automatiseren met AI</li>
+        <li data-en>Automating workflows with AI</li>
+        <li data-nl>AI koppelen aan bestaande tools (Outlook, Teams)</li>
+        <li data-en>Connecting AI to existing tools (Outlook, Teams)</li>
+        <li data-nl>Bouwen van eigen GPT's en custom instructies</li>
+        <li data-en>Building custom GPTs and custom instructions</li>
+        <li data-nl>Praktische cases per functie/sector</li>
+        <li data-en>Practical cases per function/sector</li>
+      </ul>
+      <hr class="divider">
+      <div class="grid-2" style="font-size:0.8rem; gap:8px; margin-top:4px">
+        <div><strong data-nl>Duur:</strong><strong data-en>Duration:</strong> <span data-nl>Hele dag (6-7 uur)</span><span data-en>Full day (6-7 hours)</span></div>
+        <div><strong data-nl>Groep:</strong><strong data-en>Group:</strong> <span data-nl>Max 10 personen</span><span data-en>Max 10 people</span></div>
+        <div><strong data-nl>Formaat:</strong><strong data-en>Format:</strong> <span data-nl>Op locatie (voorkeur)</span><span data-en>On-site (preferred)</span></div>
+        <div><strong data-nl>Prijs:</strong><strong data-en>Price:</strong> <span data-nl>1.200-1.500 per sessie</span><span data-en>1,200-1,500 per session</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <h4 data-nl style="color:var(--blue); margin-bottom:12px">Zakelijke constructie: nog te bespreken met Menso</h4>
+    <h4 data-en style="color:var(--blue); margin-bottom:12px">Business structure: still to be discussed with Menso</h4>
+    <div class="grid-3">
+      <div>
+        <span class="badge badge-blue" data-nl style="margin-bottom:6px; display:inline-flex">Rol Menso</span>
+        <span class="badge badge-blue" data-en style="margin-bottom:6px; display:inline-flex">Menso's role</span>
+        <p data-nl style="font-size:0.82rem">Introductie via zijn netwerk. Henk wordt aanbevolen als externe expert, niet als Mensys-medewerker.</p>
+        <p data-en style="font-size:0.82rem">Introduction via his network. Henk is recommended as an external expert, not a Mensys employee.</p>
+      </div>
+      <div>
+        <span class="badge badge-orange" data-nl style="margin-bottom:6px; display:inline-flex">Vergoeding Menso</span>
+        <span class="badge badge-orange" data-en style="margin-bottom:6px; display:inline-flex">Menso's fee</span>
+        <p data-nl style="font-size:0.82rem">Introductievergoeding per geboekte sessie. Percentage of vast bedrag per lead. Nog in te vullen.</p>
+        <p data-en style="font-size:0.82rem">Introduction fee per booked session. Percentage or fixed amount per lead. To be determined.</p>
+      </div>
+      <div>
+        <span class="badge badge-green" data-nl style="margin-bottom:6px; display:inline-flex">Geen verstrengeling</span>
+        <span class="badge badge-green" data-en style="margin-bottom:6px; display:inline-flex">No conflict</span>
+        <p data-nl style="font-size:0.82rem">Workshops lopen volledig buiten Mensys om. Aparte facturatie, aparte propositie. Menso behoudt zijn relaties.</p>
+        <p data-en style="font-size:0.82rem">Workshops run entirely outside Mensys. Separate invoicing, separate proposition. Menso retains his relationships.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /page -->
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div data-nl>Mensys x Henk Jekel &bull; Vrijdag 18 april 2026 &bull; Vertrouwelijk</div>
+  <div data-en>Mensys x Henk Jekel &bull; Friday 18 April 2026 &bull; Confidential</div>
+  <div><a href="mailto:hjekel@gmail.com">hjekel@gmail.com</a></div>
+</footer>
+
+<!-- MODAL: HANDLEIDING / MEETING GUIDE -->
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <h2 data-nl>Handleiding Henk</h2>
+        <h2 data-en>Meeting Guide Henk</h2>
+        <p data-nl style="font-size:0.82rem; color:var(--muted); margin-top:4px">Vrijdag 18 april, 13:30 &bull; Persoonlijk &bull; Niet afdrukken voor de meeting</p>
+        <p data-en style="font-size:0.82rem; color:var(--muted); margin-top:4px">Friday 18 April, 13:30 &bull; Personal &bull; Do not print for the meeting</p>
+      </div>
+      <button class="modal-close" onclick="document.getElementById('modal').classList.remove('open')">&#10005;</button>
+    </div>
+
+    <h4 data-nl style="color:var(--blue); margin-bottom:10px">Agenda (90 min)</h4>
+    <h4 data-en style="color:var(--blue); margin-bottom:10px">Agenda (90 min)</h4>
+    <table class="agenda">
+      <tr><td data-nl>13:30</td><td data-en>13:30</td><td data-nl>Welkom + sfeer peilen. Menso en Thomas aan het woord laten. Luisteren.</td><td data-en>Welcome + read the room. Let Menso and Thomas speak first. Listen.</td></tr>
+      <tr><td>13:40</td><td data-nl>Opening: "Ik heb na ons gesprek niet stilgezeten. Mag ik een paar dingen laten zien?"</td><td data-en>Opening: "I have not been idle since our conversation. May I show you a few things?"</td></tr>
+      <tr><td>13:45</td><td data-nl>Secties 1+2: Thomas coaching framework + LinkedIn analyse. Vraag Thomas om reactie.</td><td data-en>Sections 1+2: Thomas coaching framework + LinkedIn analysis. Ask Thomas for his reaction.</td></tr>
+      <tr><td>14:05</td><td data-nl>Secties 3+4+5: Resellers, projecten, RFI/RFQ. Kort per onderdeel, Menso stuurt bij.</td><td data-en>Sections 3+4+5: Resellers, projects, RFI/RFQ. Brief per topic, Menso steers.</td></tr>
+      <tr><td>14:25</td><td data-nl>Sectie 6: AI workshops. Luchtig brengen. "Dit is een idee, wanneer pakken we dit apart op?"</td><td data-en>Section 6: AI workshops. Bring this lightly. "This is an idea, when do we take this up separately?"</td></tr>
+      <tr><td>14:35</td><td data-nl>Tarief + werkafspraken. Concreet: wanneer starten, wat is de eerste actie?</td><td data-en>Fee + working arrangements. Concrete: when do we start, what is the first action?</td></tr>
+      <tr><td>14:55</td><td data-nl>Afsluiting. Bevestig afspraken mondeling. Verstuur samenvatting daarna per mail.</td><td data-en>Close. Confirm agreements verbally. Send summary by email afterwards.</td></tr>
+    </table>
+
+    <hr class="divider">
+
+    <h4 data-nl style="color:var(--blue); margin-bottom:10px">Vragen aan Thomas</h4>
+    <h4 data-en style="color:var(--blue); margin-bottom:10px">Questions for Thomas</h4>
+    <ul class="q-list" data-nl>
+      <li>"Hoeveel outreaches doe je gemiddeld per week?"</li>
+      <li>"Wat is je beste lead tot nu toe geweest en hoe is die ontstaan?"</li>
+      <li>"Waar verlies je het meeste tijd aan?"</li>
+      <li>"Wat mis je aan structuur of ondersteuning?"</li>
+      <li>"Wat geeft je de meeste energie in dit werk?"</li>
+    </ul>
+    <ul class="q-list" data-en>
+      <li>"How many outreaches do you do on average per week?"</li>
+      <li>"What has been your best lead so far and how did it come about?"</li>
+      <li>"Where do you lose the most time?"</li>
+      <li>"What do you miss in terms of structure or support?"</li>
+      <li>"What gives you the most energy in this work?"</li>
+    </ul>
+
+    <hr class="divider">
+
+    <h4 data-nl style="color:var(--blue); margin-bottom:10px">Vragen aan Menso</h4>
+    <h4 data-en style="color:var(--blue); margin-bottom:10px">Questions for Menso</h4>
+    <ul class="q-list" data-nl>
+      <li>"Wat zou er moeten veranderen om Thomas zijn contract te verlengen?"</li>
+      <li>"Wat is jullie grootste pijnpunt bij RFI/RFQ verwerking nu?"</li>
+      <li>"Wanneer ben jij tevreden over Q2? Wat zijn je drie criteria?"</li>
+      <li>"Hoe wil je gerapporteerd worden: dagelijks, wekelijks, of anders?"</li>
+    </ul>
+    <ul class="q-list" data-en>
+      <li>"What needs to change to extend Thomas's contract?"</li>
+      <li>"What is your biggest pain point with RFI/RFQ processing right now?"</li>
+      <li>"When will you be satisfied with Q2? What are your three criteria?"</li>
+      <li>"How do you want to be reported to: daily, weekly, or otherwise?"</li>
+    </ul>
+
+    <hr class="divider">
+
+    <div class="card card-orange">
+      <h4 style="color:var(--orange); margin-bottom:8px" data-nl>Gouden tip</h4>
+      <h4 style="color:var(--orange); margin-bottom:8px" data-en>Golden tip</h4>
+      <p data-nl style="font-size:0.85rem">Thomas staat onder druk (contract loopt af). Benader hem als medestander, niet als subject van coaching. Zeg: <em>"Jij hebt de relatie, de kennis en de energie. Ik help jou die beter te richten."</em> Dat is een heel ander gesprek dan "jij presteert te weinig".</p>
+      <p data-en style="font-size:0.85rem">Thomas is under pressure (contract expiring). Approach him as an ally, not a subject of coaching. Say: <em>"You have the relationship, the knowledge and the energy. I help you direct that better."</em> That is a very different conversation to "you are underperforming".</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function setLang(lang) {
+  document.documentElement.setAttribute('data-lang', lang);
+  document.getElementById('btn-nl').classList.toggle('active', lang === 'nl');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+
+function openModal() {
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modal')) {
+    document.getElementById('modal').classList.remove('open');
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('modal').classList.remove('open');
+});
+</script>
+</body>
+</html>
